@@ -1,293 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Budget Bite | Affordable Food & Free Views</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-            background-color: #f7f9fc;
-            color: #2d3748;
-            line-height: 1.6;
-        }
-        nav {
-            position: sticky;
-            top: 0;
-            background: #ffffff;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 14px 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-            z-index: 1000;
-        }
-        nav a {
-            text-decoration: none;
-            color: #4a5568;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 20px;
-            transition: all 0.2s;
-        }
-        nav a:hover {
-            background: #fff5f5;
-            color: #e53e3e;
-        }
-        .logo-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 25px 10px;
-            background: #1a202c;
-        }
-        .main-logo {
-            width: 100%;
-            max-width: 280px;
-            height: auto;
-        }
-        header {
-            background: #1a202c;
-            color: white;
-            text-align: center;
-            padding: 10px 20px 40px 20px;
-            border-bottom: 3px solid #e53e3e;
-        }
-        header p {
-            font-size: 1.05rem;
-            color: #cbd5e0;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 16px;
-        }
-        .adsense-placeholder {
-            background-color: #edf2f7;
-            border: 2px dashed #cbd5e0;
-            color: #718096;
-            text-align: center;
-            padding: 15px;
-            margin: 25px 0;
-            font-size: 0.75rem;
-            font-weight: bold;
-            border-radius: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .section-title {
-            margin: 35px 0 25px 0;
-            font-size: 1.7rem;
-            color: #1a202c;
-            border-left: 5px solid #e53e3e;
-            padding-left: 12px;
-        }
-        .card {
-            background: white;
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-            border: 1px solid #e2e8f0;
-            margin-bottom: 35px;
-        }
-        .card-banner {
-            width: 100%;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-        }
-        .banner-siomai {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-        }
-        .banner-isaw {
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-        }
-        .card-content {
-            padding: 24px;
-        }
-        .card h3 {
-            color: #1a202c;
-            font-size: 1.4rem;
-            margin-bottom: 8px;
-        }
-        .price-badge {
-            background-color: #e6fffa;
-            color: #234e52;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-bottom: 12px;
-        }
-        .rating-box {
-            display: flex;
-            gap: 15px;
-            margin: 12px 0;
-            font-size: 0.9rem;
-            background: #f7f9fc;
-            padding: 8px 12px;
-            border-radius: 6px;
-        }
-        .rating-item span {
-            color: #ffb300;
-            font-weight: bold;
-        }
-        .twist-box {
-            background-color: #ebf8ff;
-            border-left: 4px solid #3182ce;
-            padding: 16px;
-            margin-top: 18px;
-            border-radius: 4px;
-        }
-        .twist-box h4 {
-            margin-bottom: 6px;
-            color: #2b6cb0;
-            font-size: 1rem;
-        }
-        .form-box {
-            background-color: #ffffff;
-            border: 1px solid #e2e8f0;
-            padding: 30px;
-            margin-top: 50px;
-            border-radius: 14px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: #4a5568;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e0;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            background: #f7f9fc;
-        }
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #e53e3e;
-            background: #fff;
-        }
-        .form-group input[type="file"] {
-            padding: 12px;
-            border: 2px dashed #cbd5e0;
-            background: #fff;
-            cursor: pointer;
-        }
-        .btn-submit {
-            background-color: #e53e3e;
-            color: white;
-            padding: 15px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: bold;
-            width: 100%;
-            display: block;
-            text-align: center;
-        }
-        .btn-submit:hover {
-            background-color: #c53030;
-        }
-        footer {
-            background-color: #1a202c;
-            color: #a0aec0;
-            text-align: center;
-            padding: 35px 20px;
-            margin-top: 60px;
-            font-size: 0.85rem;
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <a href="#">🍽️ Home Combos</a>
-        <a href="#submit">📢 Submit a Spot</a>
-    </nav>
-
-    <div class="logo-container">
-        <svg class="main-logo" viewBox="0 0 300 80" xmlns="http://w3.org">
-            <g transform="translate(10, 10)">
-                <path d="M30 0 C13 0 0 13 0 30 C0 48 22 67 27 71 C29 72 31 72 33 71 C38 67 60 48 60 30 C60 13 47 0 30 0 Z" fill="#e53e3e"/>
-                <path d="M22 20 C22 15 28 12 32 18 C35 23 25 32 38 32 C45 32 43 45 35 45 C25 45 18 35 22 20 Z" fill="#ffcc00"/>
-                <circle cx="30" cy="30" r="8" fill="#1a202c"/>
-            </g>
-            <text x="85" y="42" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#ffcc00">The Budget</text>
-            <text x="216" y="42" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#e53e3e">Bite</text>
-            <text x="85" y="62" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#a0aec0" letter-spacing="0.5">FOOD & TRAVEL ON A DIME</text>
-        </svg>
-    </div>
-
-    <header>
-        <p>Epic local street food stalls paired perfectly with amazing, free travel hangouts.</p>
-    </header>
-
-    <div class="container">
-        
-        <div class="adsense-placeholder">
-            ▲ Google AdSense Automatic Header Banner (Will load here) ▲
-        </div>
-
-        <h2 class="section-title">Latest Budget Travel Combos</h2>
-        
-        <div class="card">
-            <div class="card-banner banner-siomai">🥟</div>
-            <div class="card-content">
-                <span class="price-badge">₱20 - ₱50 Budget</span>
-                <h3>Garlic Chili Pork Siomai + Freedom Park Sunset</h3>
-                <div class="rating-box">
-                    <div class="rating-item">Food: <span>⭐⭐⭐⭐★</span></div>
-                    <div class="rating-item">View Vibe: <span>⭐⭐⭐⭐⭐</span></div>
-                </div>
-                <p><strong>The Bite:</strong> Agapita Street. Grab a steaming plate of freshly made, ultra-juicy pork siomai drenched in crisp garlic-chili oil and fresh calamansi.</p>
-                <div class="twist-box">
-                    <h4>📍 The Free Travel Twist: UPLB Freedom Park</h4>
-                    <p>Walk right past the campus security gate and sit out on the expansive open grass fields. Enjoy your meal completely free while watching the sun slip below the mountains.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-banner banner-isaw">🍢</div>
-            <div class="card-content">
-                <span class="price-badge">₱12 - ₱30 Budget</span>
-                <h3>Charred Chicken Isaw + Lakeside Cool Breeze</h3>
-                <div class="rating-box">
-                    <div class="rating-item">Food: <span>⭐⭐⭐⭐⭐</span></div>
-                    <div class="rating-item">View Vibe: <span>⭐⭐⭐⭐★</span></div>
-                </div>
-                <p><strong>The Bite:</strong> Lopez Avenue. Experience classic smoky street barbecue chicken intestines marinated in a distinct sweet soy-glaze and dipped in spiced coconut vinegar.</p>
-                <div class="twist-box">
-                    <h4>📍 The Free Travel Twist: Tadlac Lake Rim</h4>
-                    <p>Walk down with your grilled skewers to the shoreline viewing perimeter. Catch the beautiful evening breeze bouncing right off the lake without spending a single cent.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="adsense-placeholder">
-            ▼ Google AdSense In-Feed Ad Unit (Mid-Page) ▼
-        </div>
-
-        <!-- Fully Re-engineered Form Area -->
-        <div class="form-box" id="submit">
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/index.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/top-10-street-foods-binondo-manila.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/san-pablo-city-laguna-food-history.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/pagsanjan-laguna-food-history.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/liliw-laguna-food-history.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/santa-cruz-laguna-food-history.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/blog/los-banos-laguna-food-history.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/businesses.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/about.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://ambionvra21-ship-it.github.io/privacy-policy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+</urlset>
