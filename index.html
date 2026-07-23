@@ -56,7 +56,7 @@
             background: #1a202c;
             color: white;
             text-align: center;
-            padding: 30px 20px 40px 20px;
+            padding: 10px 20px 40px 20px;
             border-bottom: 3px solid #e53e3e;
         }
         header p {
@@ -163,36 +163,41 @@
             border-radius: 14px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.02);
         }
-              <!-- Submission Form Area -->
-        <div class="form-box" id="submit">
-            <h3 style="color:#e53e3e; font-size: 1.5rem; margin-bottom: 8px;">📢 Share a Food & Travel Combo!</h3>
-            <p style="font-size:0.95rem; color:#4a5568; margin-bottom: 20px;">Know a cheap food gem that rests right next to a park, viewpoint, or architectural wonder? Submit it below!</p>
-            
-            <form action="https://formspree.io" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="foodName">Food / Stall Name:</label>
-                    <input type="text" id="foodName" name="stall_name" required placeholder="e.g., Aling Marites' Famous Lugawan">
-                </div>
-                <div class="form-group">
-                    <label for="price">Price Range (PHP):</label>
-                    <input type="text" id="price" name="price" required placeholder="e.g., ₱30 - ₱60">
-                </div>
-                <div class="form-group">
-                    <label for="twistSpot">The Free Travel View Destination:</label>
-                    <input type="text" id="twistSpot" name="free_spot" required placeholder="Where should they take the food? (e.g., Town Plaza Bench)">
-                </div>
-                <div class="form-group">
-                    <label for="details">Describe the Combo Experience:</label>
-                    <textarea id="details" name="details" rows="4" required placeholder="What makes the food delicious and the view worth visiting?"></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="foodPhoto">Upload Photo (Food or View):</label>
-                    <input type="file" id="foodPhoto" name="combo_image" accept="image/*">
-                </div>
-                <button type="submit" class="btn-submit">Submit Itinerary</button>
-            </form>
-        </div>
-
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background: #f7f9fc;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #e53e3e;
+            background: #fff;
+        }
+        .form-group input[type="file"] {
+            padding: 12px;
+            border: 2px dashed #cbd5e0;
+            background: #fff;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: #e53e3e;
+            color: white;
+            padding: 15px;
+            border: none;
             border-radius: 6px;
             cursor: pointer;
             font-size: 1.05rem;
