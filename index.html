@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO META TAGS -->
     <title>Free Online BMI Calculator, Calorie Counter & Fitness Tools</title>
-    <meta name="description" content="Calculate your Body Mass Index (BMI), track daily calorie intake goals, and monitor water consumption with our free online fitness tools. Fast, accurate, and easy to use.">
-    <meta name="keywords" content="BMI calculator, free calorie counter, water intake tracker, health tools, weight loss calculator, fitness hub online">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://github.io">
-
-    <!-- Google tag (gtag.js) -->
+    
+    <!-- Google Analytics Tracking -->
     <script async src="https://googletagmanager.com"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -20,86 +14,35 @@
       gtag('config', 'G-NGQGPEH0K4');
     </script>
     
-    <!-- GOOGLE ADSENSE CODE CONNECTED -->
+    <!-- Google AdSense Activation -->
     <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-9659641195994032">
 
-    <!-- jQuery Library -->
-    <script src="https://jquery.com"></script>
-    
+    <!-- Embedded Vanilla JavaScript to Prevent Dependency Errors -->
     <style>
         body { 
             background-color: #f4f6f9; 
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
         nav {
-            background-color: #1e293b;
-            color: white;
-            padding: 1.25rem;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
+            background-color: #1e293b; color: white;
+            padding: 1.25rem; text-align: center;
+            font-size: 1.5rem; font-weight: bold;
         }
         .app-card {
-            max-width: 500px;
-            margin: 1.5rem auto;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            max-width: 500px; margin: 1.5rem auto;
+            padding: 1.5rem; background: white;
+            border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
-        h2 {
-            margin-top: 0;
-            color: #1e293b;
-            font-size: 1.25rem;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 0.5rem;
-        }
-        .input-group {
-            margin-bottom: 1rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.4rem;
-            font-weight: 600;
-            color: #475569;
-        }
-        input, select {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:active {
-            background-color: #1d4ed8;
-        }
-        .result-display {
-            margin-top: 1rem;
-            padding: 0.75rem;
-            border-radius: 6px;
-            text-align: center;
-            font-weight: bold;
-            display: none;
-        }
-        .list-items {
-            margin-top: 1rem;
-            padding-left: 1.25rem;
-        }
+        h2 { margin-top: 0; color: #1e293b; font-size: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; }
+        .input-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: #475569; }
+        input, select { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        button { width: 100%; padding: 0.75rem; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+        button:active { background-color: #1d4ed8; }
+        .result-display { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; text-align: center; font-weight: bold; display: none; }
+        .list-items { margin-top: 1rem; padding-left: 1.25rem; }
     </style>
 </head>
 <body>
@@ -110,11 +53,11 @@
     <div class="app-card">
         <h2>🏋️ Body Mass Index (BMI) Calculator</h2>
         <div class="input-group">
-            <label for="weight">Weight (kg)</label>
+            <label>Weight (kg)</label>
             <input type="number" id="weight" placeholder="e.g., 70">
         </div>
         <div class="input-group">
-            <label for="height">Height (cm)</label>
+            <label>Height (cm)</label>
             <input type="number" id="height" placeholder="e.g., 175">
         </div>
         <button id="calculateBmiBtn">Calculate BMI</button>
@@ -125,7 +68,7 @@
     <div class="app-card">
         <h2>💧 Water Intake Tracker</h2>
         <div class="input-group">
-            <label for="waterAmount">Add Consumed Water</label>
+            <label>Select Amount Consumed</label>
             <select id="waterAmount">
                 <option value="250">Small Glass (250 ml)</option>
                 <option value="500">Standard Bottle (500 ml)</option>
@@ -140,12 +83,12 @@
     <div class="app-card">
         <h2>🍎 Dietary Calorie Counter</h2>
         <div class="input-group">
-            <label for="foodName">Food/Meal Item Name</label>
-            <input type="text" id="foodName" placeholder="e.g., Grilled Chicken Salad">
+            <label>Food Item Name</label>
+            <input type="text" id="foodName" placeholder="e.g., Apple">
         </div>
         <div class="input-group">
-            <label for="calorieAmount">Calories (kcal)</label>
-            <input type="number" id="calorieAmount" placeholder="e.g., 350">
+            <label>Calories (kcal)</label>
+            <input type="number" id="calorieAmount" placeholder="e.g., 95">
         </div>
         <button id="addFoodBtn">Log Meal Item</button>
         <div id="dietResult" class="result-display" style="display:block; background:#f0fdf4; color:#166534;">Total Calories: 0 kcal</div>
@@ -153,63 +96,59 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            // FIX: "click pointerdown" binds perfectly across all responsive mobile touch screens
+        // Native JavaScript engine to fix external mobile rendering glitches
+        document.getElementById("calculateBmiBtn").addEventListener("click", function() {
+            var w = parseFloat(document.getElementById("weight").value);
+            var hCm = parseFloat(document.getElementById("height").value);
+            var res = document.getElementById("bmiResult");
+
+            if (isNaN(w) || isNaN(hCm) || w <= 0 || hCm <= 0) {
+                alert("Please input positive numbers for weight and height.");
+                return;
+            }
+
+            var hM = hCm / 100;
+            var score = (w / (hM * hM)).toFixed(1);
+            var label = "", c = "";
+
+            if (score < 18.5) { label = "Underweight"; c = "#eab308"; }
+            else if (score < 25) { label = "Normal Weight"; c = "#22c55e"; }
+            else if (score < 30) { label = "Overweight"; c = "#f97316"; }
+            else { label = "Obese"; c = "#ef4444"; }
+
+            res.style.backgroundColor = c;
+            res.style.color = "#fff";
+            res.style.display = "block";
+            res.innerHTML = "Your BMI is: " + score + " (" + label + ")";
+        });
+
+        var waterSum = 0;
+        document.getElementById("addWaterBtn").addEventListener("click", function() {
+            waterSum += parseInt(document.getElementById("waterAmount").value);
+            document.getElementById("waterResult").innerText = "Total logged today: " + waterSum + " ml / 2500 ml goal";
+        });
+
+        var calSum = 0;
+        document.getElementById("addFoodBtn").addEventListener("click", function() {
+            var meal = document.getElementById("foodName").value.trim();
+            var kcal = parseInt(document.getElementById("calorieAmount").value);
+
+            if(!meal || isNaN(kcal) || kcal <= 0) {
+                alert("Please enter a valid meal name and calorie value.");
+                return;
+            }
+
+            calSum += kcal;
+            document.getElementById("dietResult").innerText = "Total Calories: " + calSum + " kcal";
             
-            // --- BMI Computation Logic ---
-            $("#calculateBmiBtn").on("click pointerdown", function(e) {
-                e.preventDefault();
-                let w = parseFloat($("#weight").val());
-                let hCm = parseFloat($("#height").val());
-
-                if (isNaN(w) || isNaN(hCm) || w <= 0 || hCm <= 0) {
-                    alert("Please input active positive metric numbers.");
-                    return;
-                }
-
-                let hM = hCm / 100;
-                let score = (w / (hM * hM)).toFixed(1);
-                let label = ""; let c = "";
-
-                if (score < 18.5) { label = "Underweight"; c = "#eab308"; }
-                else if (score < 25) { label = "Normal Weight"; c = "#22c55e"; }
-                else if (score < 30) { label = "Overweight"; c = "#f97316"; }
-                else { label = "Obese"; c = "#ef4444"; }
-
-                $("#bmiResult").css({"background-color": c, "color": "#fff"})
-                    .html("Your BMI is: " + score + " (" + label + ")").show();
-            });
-
-            // --- Water Counter Logic ---
-            let waterSum = 0;
-            $("#addWaterBtn").on("click pointerdown", function(e) {
-                e.preventDefault();
-                waterSum += parseInt($("#waterAmount").val());
-                $("#waterResult").text("Total logged today: " + waterSum + " ml / 2500 ml goal");
-            });
-
-            // --- Dietary Calorie Logic ---
-            let calSum = 0;
-            $("#addFoodBtn").on("click pointerdown", function(e) {
-                e.preventDefault();
-                let meal = $("#foodName").val().trim();
-                let kcal = parseInt($("#calorieAmount").val());
-
-                if(!meal || isNaN(kcal) || kcal <= 0) {
-                    alert("Please enter a valid meal name and calorie value.");
-                    return;
-                }
-
-                calSum += kcal;
-                $("#dietResult").text("Total Calories: " + calSum + " kcal");
-                $("#foodList").append("<li>" + meal + " - " + kcal + " kcal</li>");
-                
-                // Clear active fields
-                $("#foodName").val('');
-                $("#calorieAmount").val('');
-            });
+            var li = document.createElement("li");
+            li.innerText = meal + " - " + kcal + " kcal";
+            document.getElementById("foodList").appendChild(li);
+            
+            document.getElementById("foodName").value = '';
+            document.getElementById("calorieAmount").value = '';
         });
     </script>
-
 </body>
 </html>
+             
