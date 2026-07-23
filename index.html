@@ -53,16 +53,17 @@
             height: auto;
         }
         header {
-            background: linear-gradient(rgba(26, 32, 44, 0.85), rgba(26, 32, 44, 0.9)), url('https://wikimedia.org') no-repeat center center/cover;
+            background: #1a202c;
             color: white;
             text-align: center;
-            padding: 40px 20px 50px 20px;
+            padding: 30px 20px 40px 20px;
+            border-bottom: 3px solid #e53e3e;
         }
         header p {
             font-size: 1.05rem;
             color: #cbd5e0;
             max-width: 500px;
-            margin: 10px auto 0 auto;
+            margin: 0 auto;
         }
         .container {
             max-width: 800px;
@@ -97,10 +98,19 @@
             border: 1px solid #e2e8f0;
             margin-bottom: 35px;
         }
-        .card-img {
+        .card-banner {
             width: 100%;
-            height: 240px;
-            object-fit: cover;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+        }
+        .banner-siomai {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+        }
+        .banner-isaw {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
         }
         .card-content {
             padding: 24px;
@@ -215,7 +225,6 @@
         <a href="#submit">📢 Submit a Spot</a>
     </nav>
 
-    <!-- Custom vector logo -->
     <div class="logo-container">
         <svg class="main-logo" viewBox="0 0 300 80" xmlns="http://w3.org">
             <g transform="translate(10, 10)">
@@ -243,7 +252,7 @@
         
         <!-- Combo Card 1 -->
         <div class="card">
-            <img src="https://wikimedia.org" class="card-img" alt="Pork Dumplings Siomai">
+            <div class="card-banner banner-siomai">🥟</div>
             <div class="card-content">
                 <span class="price-badge">₱20 - ₱50 Budget</span>
                 <h3>Garlic Chili Pork Siomai + Freedom Park Sunset</h3>
@@ -264,7 +273,7 @@
 
         <!-- Combo Card 2 -->
         <div class="card">
-            <img src="https://wikimedia.org" class="card-img" alt="Street BBQ Charcoal Grill">
+            <div class="card-banner banner-isaw">🍢</div>
             <div class="card-content">
                 <span class="price-badge">₱12 - ₱30 Budget</span>
                 <h3>Charred Chicken Isaw + Lakeside Cool Breeze</h3>
@@ -284,3 +293,6 @@
         </div>
 
         <div class="adsense-placeholder">
+            ▼ Google AdSense In-Feed Ad Unit (Mid-Page) ▼
+        </div>
+
