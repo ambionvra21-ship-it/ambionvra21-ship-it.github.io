@@ -3,164 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Online BMI Calculator, Calorie Counter & Fitness Tools</title>
-    
-    <!-- Google Analytics Tracking -->
-    <script async src="https://googletagmanager.com"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-NGQGPEH0K4');
-    </script>
-    
-    <!-- Google AdSense Activation with Auto Ads Enabled -->
-    <script async src="https://googlesyndication.com" crossorigin="anonymous"></script>
-    <meta name="google-adsense-account" content="ca-pub-9659641195994032">
-
+    <title>The Budget Bite | Affordable Food & Free Views</title>
     <style>
-        body { 
-            background-color: #f4f6f9; 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-            margin: 0; padding: 0;
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #2d3748;
+            line-height: 1.6;
         }
         nav {
-            background-color: #1e293b; color: white;
-            padding: 1.25rem; text-align: center;
-            font-size: 1.5rem; font-weight: bold;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 14px 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            z-index: 1000;
         }
-        .app-card {
-            max-width: 500px; margin: 1.5rem auto;
-            padding: 1.5rem; background: white;
-            border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 20px;
+            transition: all 0.2s;
         }
-        h2 { margin-top: 0; color: #1e293b; font-size: 1.25rem; padding-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; }
-        .input-group { margin-bottom: 1rem; }
-        label { display: block; margin-bottom: 0.4rem; font-weight: 600; color: #475569; }
-        input, select { width: 100%; padding: 0.75rem; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
-        button { width: 100%; padding: 0.75rem; background-color: #2563eb; color: white; border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; }
-        button:active { background-color: #1d4ed8; }
-        .result-display { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; text-align: center; font-weight: bold; display: none; }
-        .list-items { margin-top: 1rem; padding-left: 1.25rem; }
+        nav a:hover {
+            background: #fff5f5;
+            color: #e53e3e;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px 10px;
+            background: #1a202c;
+        }
+        .main-logo {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+        }
+        header {
+            background: linear-gradient(rgba(26, 32, 44, 0.85), rgba(26, 32, 44, 0.9)), url('https://unsplash.com') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 40px 20px 50px 20px;
+        }
+        header p {
+            font-size: 1.05rem;
+            color: #cbd5e0;
+            max-width: 500px;
+            margin: 10px auto 0 auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 16px;
+        }
+        .adsense-placeholder {
+            background-color: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            color: #718096;
+            text-align: center;
+            padding: 15px;
+            margin: 25px 0;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .section-title {
+            margin: 35px 0 25px 0;
+            font-size: 1.7rem;
+            color: #1a202c;
+            border-left: 5px solid #e53e3e;
+            padding-left: 12px;
+        }
+        .card {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 35px;
+        }
+        .card-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 24px;
+        }
+        .card h3 {
+            color: #1a202c;
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+        .price-badge {
+            background-color: #e6fffa;
+            color: #234e52;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .rating-box {
+            display: flex;
+            gap: 15px;
+            margin: 12px 0;
+            font-size: 0.9rem;
+            background: #f7f9fc;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        .rating-item span {
+            color: #ffb300;
+            font-weight: bold;
+        }
+        .twist-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 16px;
+            margin-top: 18px;
+            border-radius: 4px;
+        }
+        .twist-box h4 {
+            margin-bottom: 6px;
+            color: #2b6cb0;
+            font-size: 1rem;
+        }
+        .form-box {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 30px;
+            margin-top: 50px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #4a5568;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background: #f7f9fc;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #e53e3e;
+            background: #fff;
+        }
+        .form-group input[type="file"] {
+            padding: 12px;
+            border: 2px dashed #cbd5e0;
+            background: #fff;
+            cursor: pointer;
+        }
+        .btn-submit {
+            background-color: #e53e3e;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.05rem;
+            font-weight: bold;
+            width: 100%;
+            transition: background 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #c53030;
+        }
+        footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 60px;
+            font-size: 0.85rem;
+        }
+        footer a {
+            color: #e53e3e;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
 
-    <nav>Fitness Hub Online</nav>
+    <nav>
+        <a href="#">🍽️ Home Combos</a>
+        <a href="#submit">📢 Submit a Spot</a>
+    </nav>
 
-    <!-- 1. BMI CALCULATOR WORKSPACE -->
-    <div class="app-card">
-        <h2>Body Mass Index (BMI) Calculator</h2>
-        <div class="input-group">
-            <label>Weight (kg)</label>
-            <input type="number" id="weight" placeholder="e.g., 70">
-        </div>
-        <div class="input-group">
-            <label>Height (cm)</label>
-            <input type="number" id="height" placeholder="e.g., 175">
-        </div>
-        <button id="calculateBmiBtn">Calculate BMI</button>
-        <div id="bmiResult" class="result-display"></div>
+    <!-- This is your custom vector logo built right into the code -->
+    <div class="logo-container">
+        <svg class="main-logo" viewBox="0 0 300 80" xmlns="http://w3.org">
+            <g transform="translate(10, 10)">
+                <path d="M30 0 C13 0 0 13 0 30 C0 48 22 67 27 71 C29 72 31 72 33 71 C38 67 60 48 60 30 C60 13 47 0 30 0 Z" fill="#e53e3e"/>
+                <path d="M22 20 C22 15 28 12 32 18 C35 23 25 32 38 32 C45 32 43 45 35 45 C25 45 18 35 22 20 Z" fill="#ffcc00"/>
+                <circle cx="30" cy="30" r="8" fill="#1a202c"/>
+            </g>
+            <text x="85" y="42" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#ffcc00">The Budget</text>
+            <text x="216" y="42" font-family="Arial, sans-serif" font-weight="900" font-size="24" fill="#e53e3e">Bite</text>
+            <text x="85" y="62" font-family="Arial, sans-serif" font-weight="600" font-size="11" fill="#a0aec0" letter-spacing="0.5">FOOD & TRAVEL ON A DIME</text>
+        </svg>
     </div>
 
-    <!-- 2. WATER INTAKE TRACKER WORKSPACE -->
-    <div class="app-card">
-        <h2>Water Intake Tracker</h2>
-        <div class="input-group">
-            <label>Select Amount Consumed</label>
-            <select id="waterAmount">
-                <option value="250">Small Glass (250 ml)</option>
-                <option value="500">Standard Bottle (500 ml)</option>
-                <option value="750">Large Sports Bottle (750 ml)</option>
-            </select>
+    <header>
+        <p>Epic local street food stalls paired perfectly with amazing, free travel hangouts.</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="adsense-placeholder">
+            ▲ Google AdSense Automatic Header Banner (Will load here) ▲
         </div>
-        <button id="addWaterBtn">Log Water Intake</button>
-        <div id="waterResult" class="result-display" style="display:block; background:#e0f2fe; color:#0369a1;">Total logged today: 0 ml / 2500 ml goal</div>
-    </div>
-<!-- Fixed Ad Banner Between Trackers -->
-<div style="text-align: center; margin: 1.5rem auto; max-width: 500px;">
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-9659641195994032"
-         data-ad-format="horizontal"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
 
+        <h2 class="section-title">Latest Budget Travel Combos</h2>
+        
+        <!-- Combo Card 1 -->
+        <div class="card">
+            <img src="https://unsplash.com" class="card-img" alt="Pork Dumplings Siomai">
+            <div class="card-content">
+                <span class="price-badge">₱20 - ₱50 Budget</span>
+                <h3>Garlic Chili Pork Siomai + Freedom Park Sunset</h3>
+                
+                <div class="rating-box">
+                    <div class="rating-item">Food: <span>⭐⭐⭐⭐★</span></div>
+                    <div class="rating-item">View Vibe: <span>⭐⭐⭐⭐⭐</span></div>
+                </div>
 
-    <!-- 3. DIETARY CALORIE COUNTER WORKSPACE -->
-    <div class="app-card">
-        <h2>Dietary Calorie Counter</h2>
-        <div class="input-group">
-            <label>Food Item Name</label>
-            <input type="text" id="foodName" placeholder="e.g., Apple">
+                <p><strong>The Bite:</strong> Agapita Street. Grab a steaming plate of freshly made, ultra-juicy pork siomai drenched in crisp garlic-chili oil and fresh calamansi.</p>
+                
+                <div class="twist-box">
+                    <h4>📍 The Free Travel Twist: UPLB Freedom Park</h4>
+                    <p>Walk right past the campus security gate and sit out on the expansive open grass fields. Enjoy your meal completely free while watching the sun slip below the mountains.</p>
+                </div>
+            </div>
         </div>
-        <div class="input-group">
-            <label>Calories (kcal)</label>
-            <input type="number" id="calorieAmount" placeholder="e.g., 95">
+
+        <!-- Combo Card 2 -->
+        <div class="card">
+            <img src="https://unsplash.com" class="card-img" alt="Street BBQ Charcoal Grill">
+            <div class="card-content">
+                <span class="price-badge">₱12 - ₱30 Budget</span>
+                <h3>Charred Chicken Isaw + Lakeside Cool Breeze</h3>
+                
+                <div class="rating-box">
+                    <div class="rating-item">Food: <span>⭐⭐⭐⭐⭐</span></div>
+                    <div class="rating-item">View Vibe: <span>⭐⭐⭐⭐★</span></div>
+                </div>
+
+                <p><strong>The Bite:</strong> Lopez Avenue. Experience classic smoky street barbecue chicken intestines marinated in a distinct sweet soy-glaze and dipped in spiced coconut vinegar.</p>
+                
+                <div class="twist-box">
+                    <h4>📍 The Free Travel Twist: Tadlac Lake Rim</h4>
+                    <p>Walk down with your grilled skewers to the shoreline viewing perimeter. Catch the beautiful evening breeze bouncing right off the lake without spending a single cent.</p>
+                </div>
+            </div>
         </div>
-        <button id="addFoodBtn">Log Meal Item</button>
-        <div id="dietResult" class="result-display" style="display:block; background:#f0fdf4; color:#166534;">Total Calories: 0 kcal</div>
-        <ul id="foodList" class="list-items"></ul>
-    </div>
-
-    <script>
-        document.getElementById("calculateBmiBtn").addEventListener("click", function() {
-            var w = parseFloat(document.getElementById("weight").value);
-            var hCm = parseFloat(document.getElementById("height").value);
-            var res = document.getElementById("bmiResult");
-
-            if (isNaN(w) || isNaN(hCm) || w <= 0 || hCm <= 0) {
-                alert("Please input positive numbers for weight and height.");
-                return;
-            }
-
-            var hM = hCm / 100;
-            var score = (w / (hM * hM)).toFixed(1);
-            var label = "", c = "";
-
-            if (score < 18.5) { label = "Underweight"; c = "#eab308"; }
-            else if (score < 25) { label = "Normal Weight"; c = "#22c55e"; }
-            else if (score < 30) { label = "Overweight"; c = "#f97316"; }
-            else { label = "Obese"; c = "#ef4444"; }
-
-            res.style.backgroundColor = c;
-            res.style.color = "#fff";
-            res.style.display = "block";
-            res.innerHTML = "Your BMI is: " + score + " (" + label + ")";
-        });
-
-        var waterSum = 0;
-        document.getElementById("addWaterBtn").addEventListener("click", function() {
-            waterSum += parseInt(document.getElementById("waterAmount").value);
-            document.getElementById("waterResult").innerText = "Total logged today: " + waterSum + " ml / 2500 ml goal";
-        });
-
-        var calSum = 0;
-        document.getElementById("addFoodBtn").addEventListener("click", function() {
-            var meal = document.getElementById("foodName").value.trim();
-            var kcal = parseInt(document.getElementById("calorieAmount").value);
-
-            if(!meal || isNaN(kcal) || kcal <= 0) {
-                alert("Please enter a valid meal name and calorie value.");
-                return;
-            }
-
-            calSum += kcal;
-            document.getElementById("dietResult").innerText = "Total Calories: " + calSum + " kcal";
-            
-            var li = document.createElement("li");
-            li.innerText = meal + " - " + kcal + " kcal";
-            document.getElementById("foodList").appendChild(li);
-            
-            document.getElementById("foodName").value = '';
-            document.getElementById("calorieAmount").value = '';
-        });
-    </script>
-        </body>
-    <footer style="text-align: center; margin: 2rem auto; font-size: 0.85rem;">
-        <a href="privacy.html" style="color: #64748b; text-decoration: none; font-weight: 500;">Privacy Policy</a>
-    </footer>
-</html>
 
