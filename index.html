@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEARCH ENGINE OPTIMIZATION (SEO) META TAGS -->
+    <!-- SEO META TAGS -->
     <title>Free Online BMI Calculator, Calorie Counter & Fitness Tools</title>
     <meta name="description" content="Calculate your Body Mass Index (BMI), track daily calorie intake goals, and monitor water consumption with our free online fitness tools. Fast, accurate, and easy to use.">
     <meta name="keywords" content="BMI calculator, free calorie counter, water intake tracker, health tools, weight loss calculator, fitness hub online">
@@ -41,26 +41,32 @@
             text-align: center;
             font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 0.5px;
         }
-        .container {
+        .app-card {
             max-width: 500px;
-            margin: 2rem auto;
-            padding: 2rem;
+            margin: 1.5rem auto;
+            padding: 1.5rem;
             background: white;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
+        h2 {
+            margin-top: 0;
+            color: #1e293b;
+            font-size: 1.25rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
         .input-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             font-weight: 600;
-            color: #334155;
+            color: #475569;
         }
-        input {
+        input, select {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #cbd5e1;
@@ -78,18 +84,21 @@
             font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
-            transition: background 0.2s;
         }
         button:active {
             background-color: #1d4ed8;
         }
-        .result-box {
-            margin-top: 1.5rem;
-            padding: 1rem;
+        .result-display {
+            margin-top: 1rem;
+            padding: 0.75rem;
             border-radius: 6px;
             text-align: center;
             font-weight: bold;
             display: none;
+        }
+        .list-items {
+            margin-top: 1rem;
+            padding-left: 1.25rem;
         }
     </style>
 </head>
@@ -97,64 +106,107 @@
 
     <nav>Fitness Hub Online</nav>
 
-    <div class="container">
+    <!-- 1. BMI CALCULATOR WORKSPACE -->
+    <div class="app-card">
+        <h2>🏋️ Body Mass Index (BMI) Calculator</h2>
         <div class="input-group">
             <label for="weight">Weight (kg)</label>
-            <input type="number" id="weight" placeholder="e.g., 70" step="any">
+            <input type="number" id="weight" placeholder="e.g., 70">
         </div>
-        
         <div class="input-group">
             <label for="height">Height (cm)</label>
-            <input type="number" id="height" placeholder="e.g., 175" step="any">
+            <input type="number" id="height" placeholder="e.g., 175">
         </div>
+        <button id="calculateBmiBtn">Calculate BMI</button>
+        <div id="bmiResult" class="result-display"></div>
+    </div>
 
-        <button id="calculateBtn">Calculate BMI</button>
+    <!-- 2. WATER INTAKE TRACKER WORKSPACE -->
+    <div class="app-card">
+        <h2>💧 Water Intake Tracker</h2>
+        <div class="input-group">
+            <label for="waterAmount">Add Consumed Water</label>
+            <select id="waterAmount">
+                <option value="250">Small Glass (250 ml)</option>
+                <option value="500">Standard Bottle (500 ml)</option>
+                <option value="750">Large Sports Bottle (750 ml)</option>
+            </select>
+        </div>
+        <button id="addWaterBtn">Log Water Intake</button>
+        <div id="waterResult" class="result-display" style="display:block; background:#e0f2fe; color:#0369a1;">Total logged today: 0 ml / 2500 ml goal</div>
+    </div>
 
-        <div id="result" class="result-box"></div>
+    <!-- 3. DIETARY CALORIE COUNTER WORKSPACE -->
+    <div class="app-card">
+        <h2>🍎 Dietary Calorie Counter</h2>
+        <div class="input-group">
+            <label for="foodName">Food/Meal Item Name</label>
+            <input type="text" id="foodName" placeholder="e.g., Grilled Chicken Salad">
+        </div>
+        <div class="input-group">
+            <label for="calorieAmount">Calories (kcal)</label>
+            <input type="number" id="calorieAmount" placeholder="e.g., 350">
+        </div>
+        <button id="addFoodBtn">Log Meal Item</button>
+        <div id="dietResult" class="result-display" style="display:block; background:#f0fdf4; color:#166534;">Total Calories: 0 kcal</div>
+        <ul id="foodList" class="list-items"></ul>
     </div>
 
     <script>
         $(document).ready(function() {
-            // "click touchstart" handles both desktop clicks and aggressive mobile screen taps
-            $("#calculateBtn").on("click touchstart", function(e) {
+            // FIX: "click pointerdown" binds perfectly across all responsive mobile touch screens
+            
+            // --- BMI Computation Logic ---
+            $("#calculateBmiBtn").on("click pointerdown", function(e) {
                 e.preventDefault();
+                let w = parseFloat($("#weight").val());
+                let hCm = parseFloat($("#height").val());
 
-                // Explicitly parse values to float numbers to fix the mobile calculation error
-                let weight = parseFloat($("#weight").val());
-                let heightCm = parseFloat($("#height").val());
-
-                if (isNaN(weight) || isNaN(heightCm) || weight <= 0 || heightCm <= 0) {
-                    alert("Please enter valid numbers for weight and height.");
+                if (isNaN(w) || isNaN(hCm) || w <= 0 || hCm <= 0) {
+                    alert("Please input active positive metric numbers.");
                     return;
                 }
 
-                // Convert height from centimeters to meters
-                let heightM = heightCm / 100;
-                let bmi = weight / (heightM * heightM);
-                bmi = bmi.toFixed(1); // Round to 1 decimal place
+                let hM = hCm / 100;
+                let score = (w / (hM * hM)).toFixed(1);
+                let label = ""; let c = "";
 
-                let status = "";
-                let bgColor = "";
-                let textColor = "#fff";
+                if (score < 18.5) { label = "Underweight"; c = "#eab308"; }
+                else if (score < 25) { label = "Normal Weight"; c = "#22c55e"; }
+                else if (score < 30) { label = "Overweight"; c = "#f97316"; }
+                else { label = "Obese"; c = "#ef4444"; }
 
-                if (bmi < 18.5) {
-                    status = "Underweight";
-                    bgColor = "#eab308"; // Yellow
-                } else if (bmi >= 18.5 && bmi < 24.9) {
-                    status = "Normal Weight";
-                    bgColor = "#22c55e"; // Green
-                } else if (bmi >= 25 && bmi < 29.9) {
-                    status = "Overweight";
-                    bgColor = "#f97316"; // Orange
-                } else {
-                    status = "Obese";
-                    bgColor = "#ef4444"; // Red
+                $("#bmiResult").css({"background-color": c, "color": "#fff"})
+                    .html("Your BMI is: " + score + " (" + label + ")").show();
+            });
+
+            // --- Water Counter Logic ---
+            let waterSum = 0;
+            $("#addWaterBtn").on("click pointerdown", function(e) {
+                e.preventDefault();
+                waterSum += parseInt($("#waterAmount").val());
+                $("#waterResult").text("Total logged today: " + waterSum + " ml / 2500 ml goal");
+            });
+
+            // --- Dietary Calorie Logic ---
+            let calSum = 0;
+            $("#addFoodBtn").on("click pointerdown", function(e) {
+                e.preventDefault();
+                let meal = $("#foodName").val().trim();
+                let kcal = parseInt($("#calorieAmount").val());
+
+                if(!meal || isNaN(kcal) || kcal <= 0) {
+                    alert("Please enter a valid meal name and calorie value.");
+                    return;
                 }
 
-                $("#result")
-                    .css({ "background-color": bgColor, "color": textColor })
-                    .html("Your BMI is: " + bmi + "<br>(" + status + ")")
-                    .fadeIn();
+                calSum += kcal;
+                $("#dietResult").text("Total Calories: " + calSum + " kcal");
+                $("#foodList").append("<li>" + meal + " - " + kcal + " kcal</li>");
+                
+                // Clear active fields
+                $("#foodName").val('');
+                $("#calorieAmount").val('');
             });
         });
     </script>
